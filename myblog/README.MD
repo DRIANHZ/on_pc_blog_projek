@@ -23,8 +23,8 @@ delete-post(user)++
 edit-post(user)++
 dashbord-user(as other)++
 detail-post(user)++
-comment(user)
-edit-comment(user)
+comment(user)++
+delete-comment(user)++
 choose-category(user)
 insert-new-category(admin)
 block-user(admin)

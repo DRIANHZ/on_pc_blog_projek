@@ -4,7 +4,7 @@ require "../function/koneksi.php";
 require "../function/fungsi.php";
 session_start();
 
-$id = $_GET['id'];
+// $id = $_GET['id'];
 
 echo $_SESSION['username'];
 $password =  $_SESSION['password'];

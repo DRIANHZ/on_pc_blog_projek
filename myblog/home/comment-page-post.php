@@ -8,26 +8,11 @@ $post_id = $_GET['post_id'];
 $comments = ambil_semua_data_post("SELECT * FROM `comments` WHERE `post_id` = '$post_id'");
 // $comments = ambil_satu_data_post("SELECT * FROM `coments` WHERE `post_id` = '$post_id'");
 
-
-
-$uniqueString = uniqid();
-$comment_id = crc32($uniqueString);
-$created_at = date("Y-m-d", time());
-
 session_start();
 $passUser =  $_SESSION["password"];
 
 $userFinder = ambil_semua_data_users("SELECT * FROM `users` WHERE `password` = '$passUser'");
 $user_id = $userFinder['user_id'];
-
-
-if (isset($_POST['submit'])) {
-    session_start();
-    tambah_komen($_POST);
-    
-}
-
-
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +33,7 @@ if (isset($_POST['submit'])) {
                 <th scope="col">orang nya </th>
                 <th scope="col">komenya</th>
                 <th scope="col">tanggal komen nya</th>
+                <th scope="col">delete</th>
 
 
             </tr>
@@ -57,16 +43,18 @@ if (isset($_POST['submit'])) {
                 <td scope="col"><?= $post['user_id'] ?></td>
                 <td scope="col"><?= $post['content'] ?></td>
                 <td scope="col"><?= $post['created_at'] ?></td>
-            </tbody>
+                <?php if ($user_id == $post['user_id']) : ?>
+        <td scope="col"><a href="../proses/hapus-comment.php?comment_id=<?= $post['comment_id']?>&post_id=<?= $post_id ?>">delete</a></td>
+    <?php else : ?>
+        <td scope="col"></td>
+    <?php endif; ?>
+</tbody>
         <?php endforeach; ?>
 
-        <form action="" method="post">
-            <input type="hidden" name="comment_id" value="<?= $comment_id ?>">
+        <form action="../proses/tambah_comment.php" method="post">
             <input type="hidden" name="post_id" value="<?= $post_id ?>">
             <input type="hidden" name="user_id" value="<?= $user_id ?>">
             <input type="text" name="content">
-            <input type="hidden" name="created_at" value="<?= $created_at ?>">
-            <input type="hidden" name="update_at" value="<?= $created_at ?>">
             <input type="submit" name="submit">
         </form>
 

@@ -66,20 +66,23 @@ function ubah_data_post($data){
 }
 
 
-function tambah_komen($data){
+function tambah_komen($data,$comment_id){
     global $koneksi;
 
-$uniqueString = uniqid();
-$comment_id = crc32($uniqueString);
+// $uniqueString = uniqid();
+// $comment_id = crc32($uniqueString);
 $created_at = date("Y-m-d", time());
 
+    
     $post_id = $data['post_id'];
     $user_id = $data['user_id'];
     $content = $data['content'];
-
+    // echo $comment_id;
+    // die();
 
     mysqli_query($koneksi,"INSERT INTO `comments`(`comment_id`, `post_id`, `user_id`, `content`, `created_at`, `update_at`) VALUES ('$comment_id','$post_id','$user_id','$content','$created_at','$created_at')");
 
     
 }
 ?>
+
