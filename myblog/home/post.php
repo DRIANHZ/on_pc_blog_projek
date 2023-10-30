@@ -27,48 +27,56 @@ if(isset($_POST['post'])){
     
 }
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Bootstrap Demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
-<form action="" method="post">
-
-<table>
-    <tr>
-        <td>title</td>
-        <td><input type="text" name="title"></td>
-    </tr>
-    <tr>
-        <td>content</td>
-        <td><input type="text" name="content"></td>
-    </tr>
-    <tr>
-        <td>kategori</td>
-        <td>
-            <select name="category" id="">
-                <?php while ($data = mysqli_fetch_assoc($query)) : ?>
-                    <option value="<?= $data['category_id'] ?>"><?= $data['name'] ?></option>
-                <?php endwhile; ?>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td>image</td>
-        <td><input type="text" name="image_url"></td>
-    </tr>
-    <tr>
-        <td><input type="submit" value="post" name="post"></td>
-    </tr>
-</table>
-</form>
-
+    <div class="container mt-4">
+        <form action="" method="post">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" name="title">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="content">Content</label>
+                        <input type="text" class="form-control" id="content" name="content">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select class="form-select" id="category" name="category">
+                            <?php while ($data = mysqli_fetch_assoc($query)) : ?>
+                                <option value="<?= $data['category_id'] ?>"><?= $data['name'] ?></option>
+                            <?php endwhile; ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="image_url">Image</label>
+                        <input type="text" class="form-control" id="image_url" name="image_url">
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary" name="post">Post</button>
+            </div>
+        </form>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
