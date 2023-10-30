@@ -40,7 +40,7 @@ $user_id = $userFinder['user_id'];
                                 <div class="d-flex align-items-center">
                                     <img src="../image/profile.png" class="rounded-circle me-2" width="40" height="40">
                                     <div>
-                                        <h5><?= $post['username'] ?></h5>
+                                        <h5><?= $post['user_id'] ?></h5>
                                         <small><?= $post['created_at'] ?></small>
                                     </div>
                                 </div>
@@ -51,6 +51,7 @@ $user_id = $userFinder['user_id'];
                             <p><?= $post['content'] ?></p>
                         </div>
                     </div>
+
                 <?php endforeach; ?>
             </div>
             <div class="col-md-4">
@@ -59,6 +60,9 @@ $user_id = $userFinder['user_id'];
                     <input type="hidden" name="user_id" value="<?= $user_id ?>">
                     <input type="text" name="content" class="form-control mb-3" placeholder="Tulis komentar Anda...">
                     <input type="submit" name="submit" value="Tambah Komentar" class="btn btn-primary">
+                    
+                    <a class="btn btn-primary" href="menu.php" role="button">back to menu</a>
+                    
                 </form>
             </div>
         </div>

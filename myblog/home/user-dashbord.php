@@ -49,6 +49,9 @@ $posts = ambil_semua_data_post("SELECT * FROM `posts` WHERE `user_id` = '$tampil
                 <h2 class="mb-4">Your Posts</h2>
                 <div class="list-group">
                     <?php foreach ($posts as $post) : ?>
+                        
+                        <img src="../image/download (2).jfif" class="img-responsive" style="" alt="Image">
+                        
                         <a href="other_post.php?post_id=<?= $post['post_id'] ?>" class="list-group-item list-group-item-action">
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-1"><?= $post['title'] ?></h5>
@@ -56,6 +59,7 @@ $posts = ambil_semua_data_post("SELECT * FROM `posts` WHERE `user_id` = '$tampil
                             </div>
                             <p class="mb-1"><?= $post['content'] ?></p>
                             <small>Category: <?= $post['category_id'] ?></small>
+                            <a href="../function/hapus.php?id=<?= $post['post_id'] ?>" class="btn btn-danger btn-sm">Hapus</a>
                         </a>
                     <?php endforeach; ?>
                 </div>

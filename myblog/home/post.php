@@ -24,7 +24,7 @@ if(isset($_POST['post'])){
     $user_id = $tampil_name["user_id"];
 
     posting_content("INSERT INTO `posts` (`post_id`, `title`, `content`, `user_id`, `category_id`, `image_url`, `created_at`, `update_at`) VALUES ('$post_id', '$title', '$content', '$user_id', '$category_id', '$image_url', '$created_at', '$created_at');");
-    
+    header("location:menu.php");
 }
 ?>
 <!DOCTYPE html>

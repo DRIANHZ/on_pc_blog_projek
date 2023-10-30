@@ -17,51 +17,41 @@ $user_posts = ambil_semua_data_post("SELECT * FROM `posts` WHERE `user_id` = '$u
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
-
+ 
 <body>
-<div class="card" style="width: 18rem;">
-  <img src="../image/profile.png" class="card-img-top" alt="...">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><?= $user_prof['username'] ?></li>
-    <li class="list-group-item"><?= $user_prof['user_id'] ?></li>
-    <li class="list-group-item"><?= $user_prof['role'] ?></li>
-  </ul>
-  <div class="card-body">
-    <a href="../home/menu.php" class="card-link">kembali ke menu</a>
-  </div>
-</div>    
 
 
-<table class="table">
-        <thead>
-            <tr>
-                <th scope="col">post_id</th>
-                <th scope="col">title</th>
-                <th scope="col">content</th>
-                <th scope="col">userId</th>
-                <th scope="col">kategori</th>
-                <th scope="col">image</th>
-                <th scope="col">created</th>
-                <th scope="col">adited</th>
+<body class="bg-light">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="../image/profile.png" class="card-img-top" alt="Profile Image">
+                    <div class="card-body text-center">
+                        <h5 class="card-title"><?= $user_prof['username'] ?></h5>
+                        <p class="card-text"><?= $user_prof['role'] ?></p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="../home/menu.php" class="btn btn-primary btn-sm">Back to Menu</a>
+                    </div>
+                </div>
+            </div>
 
-            </tr>
-        </thead>
-        <?php foreach ($user_posts as $post) : ?>
-            <tbody>
-                <td scope="col"><?= $post['post_id'] ?></td>
-                <td scope="col"><?= $post['title'] ?></td>
-                <td scope="col"><?= $post['content'] ?></td>
-                <td scope="col"><?= $post['user_id'] ?></td>
-                <td scope="col"><?= $post['category_id'] ?></td>
-                <td scope="col"><?= $post['image_url'] ?></td>
-                <td scope="col"><?= $post['created_at'] ?></td>
-                <td scope="col"><?= $post['update_at'] ?></td>
-
-
-            </tbody>
-        <?php endforeach; ?>
-    </table>
-
+            <div class="col-md-8">
+                <h2 class="mb-4">Your Posts</h2>
+                <div class="list-group">
+                    <?php foreach ($user_posts as $post) : ?>
+                        <a href="other_post.php?post_id=<?= $post['post_id'] ?>" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1"><?= $post['title'] ?></h5>
+                                <small><?= $post['created_at'] ?></small>
+                            </div>
+                            <p class="mb-1"><?= $post['content'] ?></p>
+                            <small>Category: <?= $post['category_id'] ?></small>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

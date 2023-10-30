@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
         echo "Gagal menambahkan kategori";
     }
 
-    $categoris = ambil_semua_data_post("SELECT * FROM `categories`");
+    $kategori = ambil_semua_data_post("SELECT * FROM `categories`");
     
 }
 ?>
@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($categori as $categori) : ?>
+                        <?php foreach($kategori as $categori) : ?>
                             <tr>
                                 <td><?= $categori["category_id"] ?></td>
                                 <td><?= $categori["name"] ?></td>
